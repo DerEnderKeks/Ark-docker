@@ -1,4 +1,4 @@
-# ARK: Survival Evolved - Docker
+# ARK: Survival Evolved - Docker ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/derenderkeks/ark?style=flat-square)
 
 Docker build for managing an ARK: Survival Evolved server.
 
