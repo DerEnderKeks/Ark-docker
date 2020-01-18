@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER TuRzAm
+MAINTAINER DerEnderKeks
 
 # Var for first config
 # Server Name
