@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:latest
 
 MAINTAINER DerEnderKeks
 
@@ -33,7 +33,7 @@ ENV UID 1000
 ENV GID 1000
 
 # Install dependencies 
-RUN apt-get update &&\ 
+RUN apt-get update && apt-get upgrade -y\ 
     apt-get install -y curl lib32gcc1 lsof git
 
 # Enable passwordless sudo for users under the "sudo" group
