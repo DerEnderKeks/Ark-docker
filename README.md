@@ -70,7 +70,7 @@ To add mods, you only need to change the variable ark_GameModIds in *arkmanager.
 
 ## Recommended Usage
 - First run  
- `docker run -it -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -p 32330:32330 -e SESSIONNAME=myserver -e ADMINPASSWORD="mypasswordadmin" -e AUTOUPDATE=120 -e AUTOBACKUP=60 -e WARNMINUTE=30 -v /my/path/to/ark:/ark --name ark turzam/ark`  
+ `docker run -it -p 7778:7778 -p 7778:7778/udp -p 27015:27015 -p 27015:27015/udp -p 32330:32330 -e SESSIONNAME=myserver -e ADMINPASSWORD="mypasswordadmin" -e AUTOUPDATE=120 -e AUTOBACKUP=60 -e WARNMINUTE=30 -v /my/path/to/ark:/ark --name ark derenderkeks/ark`  
 - Wait for ark to be downloaded installed and launched, then Ctrl+C to stop the server.
 - Edit */my/path/to/ark/GameUserSetting.ini and Game.ini*
 - Edit */my/path/to/ark/arkserver.cfg* to add mods and configure warning time.
