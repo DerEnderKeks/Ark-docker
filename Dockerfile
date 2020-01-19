@@ -34,7 +34,7 @@ ENV GID 1000
 
 # Install dependencies 
 RUN apt-get update && apt-get upgrade -y &&\
-	apt-get install -y curl lib32gcc1 lsof git sudo
+    apt-get install -y curl lib32gcc1 lsof git sudo cron
 
 # Enable passwordless sudo for users under the "sudo" group
 RUN sed -i.bkp -e \
@@ -62,7 +62,6 @@ RUN chmod 777 /home/steam/user.sh
 RUN mkdir /ark
 
 
-# We use the git method, because api github has a limit ;)
 RUN  git clone https://github.com/FezVrasta/ark-server-tools.git /home/steam/ark-server-tools
 WORKDIR /home/steam/ark-server-tools/
 RUN  git checkout $GIT_TAG 
@@ -88,11 +87,6 @@ RUN chown steam -R /ark && chmod 755 -R /ark
 RUN mkdir /home/steam/steamcmd &&\ 
 	cd /home/steam/steamcmd &&\ 
 	curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar -vxz
-
-
-# First run is on anonymous to download the app
-# We can't download from docker hub anymore -_-
-#RUN /home/steam/steamcmd/steamcmd.sh +login anonymous +quit
 
 EXPOSE ${STEAMPORT} 32330 ${SERVERPORT}
 # Add UDP
