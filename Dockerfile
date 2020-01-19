@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-MAINTAINER DerEnderKeks
+LABEL maintainer="DerEnderKeks"
 
 # Var for first config
 # Server Name
@@ -33,8 +33,8 @@ ENV UID 1000
 ENV GID 1000
 
 # Install dependencies 
-RUN apt-get update && apt-get upgrade -y &&\ 
-    apt-get install -y curl lib32gcc1 lsof git
+RUN apt-get update && apt-get upgrade -y &&\
+	apt-get install -y curl lib32gcc1 lsof git sudo
 
 # Enable passwordless sudo for users under the "sudo" group
 RUN sed -i.bkp -e \
@@ -59,7 +59,7 @@ COPY arkmanager-user.cfg /home/steam/arkmanager.cfg
 RUN touch /root/.bash_profile
 RUN chmod 777 /home/steam/run.sh
 RUN chmod 777 /home/steam/user.sh
-RUN mkdir  /ark
+RUN mkdir /ark
 
 
 # We use the git method, because api github has a limit ;)
@@ -87,7 +87,7 @@ RUN chown steam -R /ark && chmod 755 -R /ark
 # download steamcmd
 RUN mkdir /home/steam/steamcmd &&\ 
 	cd /home/steam/steamcmd &&\ 
-	curl http://media.steampowered.com/installer/steamcmd_linux.tar.gz | tar -vxz 
+	curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar -vxz
 
 
 # First run is on anonymous to download the app
@@ -98,7 +98,7 @@ EXPOSE ${STEAMPORT} 32330 ${SERVERPORT}
 # Add UDP
 EXPOSE ${STEAMPORT}/udp ${SERVERPORT}/udp
 
-VOLUME  /ark 
+VOLUME /ark 
 
 # Change the working directory to /arkd
 WORKDIR /ark
