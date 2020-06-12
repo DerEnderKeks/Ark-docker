@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:eoan
 
 LABEL maintainer="DerEnderKeks"
 
